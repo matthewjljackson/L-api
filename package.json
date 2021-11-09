@@ -23,7 +23,6 @@
   "homepage": "https://github.com/matthewjljackson/L-api#readme",
   "devDependencies": {
     "@types/node": "^16.11.7",
-    "nodemon": "^2.0.14",
     "prisma": "^3.4.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"

@@ -26,16 +26,11 @@ export const Product = objectType({
   }
 })
 
-const Season = enumType({
-  name: 'Season',
-  members: ['WINTER','SUMMER']
-})
-
 export const ProductQuery = extendType({
   type: 'Query',
   definition(t) {
     t.nonNull.field('product', {
-      type: 'Product',
+      type: Product,
       args: {
         id: nonNull(intArg())
       },
@@ -65,10 +60,9 @@ export const CreateProductMutation = extendType({
   type: 'Mutation',
   definition(t) {
     t.field('createProduct', {
-      type: 'Product',
+      type: Product,
       args: { data: ProductInputType },
       resolve(_root, args, ctx) {
-        console.log(args)
         const newProduct = {
           productName: args.data.productName,
           price: args.data.price,
@@ -100,10 +94,9 @@ export const UpdateProductMutation = extendType({
   type: 'Mutation',
   definition(t) {
     t.field('updateProduct', {
-      type: 'Product',
+      type: Product,
       args: { data: UpdateProductInputType },
       resolve(_root, args, ctx) {
-        console.log(args)
         const newProductInfo = {
           productName: args.data.productName,
             price: args.data.price,
@@ -126,7 +119,7 @@ export const DeleteProductMutation = extendType({
   type: 'Mutation',
   definition(t) {
     t.field('deleteProduct', {
-      type: 'Product',
+      type: Product,
       args: {
         id: nonNull(intArg())
       },
