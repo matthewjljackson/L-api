@@ -1,5 +1,7 @@
-import { booleanArg, enumType, extendType, floatArg, inputObjectType, intArg, mutationField, nonNull, objectType, queryField, stringArg } from 'nexus';
+import { extendType, inputObjectType, intArg, nonNull, objectType } from 'nexus';
 import { User } from './User';
+import { INewProduct } from '../../interfaces/INewProduct';
+import { IUpdateProduct } from '../../interfaces/IUpdateProduct';
 
 export const Product = objectType({
   name: 'Product',
@@ -9,7 +11,6 @@ export const Product = objectType({
     t.nonNull.float('price'),
     t.nonNull.boolean('inStock'),
     t.nonNull.int('quantity'),
-    // t.nonNull.field('seasonalItem', { type: Season }),
     t.nonNull.int('userId'),
     t.nonNull.field('user', {
       type: User,
@@ -63,7 +64,7 @@ export const CreateProductMutation = extendType({
       type: Product,
       args: { data: ProductInputType },
       resolve(_root, args, ctx) {
-        const newProduct = {
+        const newProduct: INewProduct = {
           productName: args.data.productName,
           price: args.data.price,
           inStock: args.data.inStock,
@@ -97,7 +98,7 @@ export const UpdateProductMutation = extendType({
       type: Product,
       args: { data: UpdateProductInputType },
       resolve(_root, args, ctx) {
-        const newProductInfo = {
+        const newProductInfo: IUpdateProduct = {
           productName: args.data.productName,
             price: args.data.price,
             inStock: args.data.inStock,
