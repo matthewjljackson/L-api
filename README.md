@@ -2,7 +2,7 @@
 
 ### Getting Started
 
-1. Install the required dependencies from both the client and server folders.
+1. Install the required dependencies.
 2. Add a .env file and set up with [PostgreSQL](https://www.postgresql.org/).
 3. Seed the database with the following commands:
 
@@ -11,6 +11,7 @@
 - `npx prisma studio`
 
 4. Run with `npm run dev`.
+5. Open Apollo Studio in your browser at http://localhost:4000/graphql to view and test available mutations/queries.
 
 ### Technologies
 
