@@ -131,7 +131,11 @@ export const DeleteProductMutation = extendType({
         id: nonNull(intArg())
       },
       resolve(_parent, args, ctx) {
-        
+        return ctx.prisma.product.delete({
+          where: {
+            id: args.id
+          }
+        })
       }
     })
   }
