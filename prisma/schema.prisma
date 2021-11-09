@@ -18,17 +18,11 @@ model User {
 }
 
 model Product {
-  id           Int     @id @default(autoincrement())
-  productName  String
-  price        Float
-  inStock      Boolean @default(true)
-  quantity     Int
-  seasonalItem Season
-  user         User    @relation(fields: [userId], references: [id])
-  userId       Int
-}
-
-enum Season {
-  WINTER
-  SUMMER
+  id          Int     @id @default(autoincrement())
+  productName String
+  price       Float
+  inStock     Boolean @default(true)
+  quantity    Int
+  user        User    @relation(fields: [userId], references: [id])
+  userId      Int
 }

@@ -7,15 +7,16 @@ export const User = objectType({
     t.nonNull.int('id'),
     t.nonNull.string('name'),
     t.nonNull.string('email'),
-    t.list.field('product', {
+    t.list.field('wishlist', {
       type: Product,
       async resolve( parent, _args, ctx ) {
         return await ctx.prisma.user.findUnique({
           where: {
             id: parent.id
           }
-        }).product()
+        }).wishlist()
       }
     })
   }
 })
+
